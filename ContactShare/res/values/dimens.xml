@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+      <!-- 字体大小 -->
+    <dimen name="YST_W_EBIG">30sp</dimen>
+    <dimen name="YST_W_MBIG">24sp</dimen>
+    <dimen name="YST_W_BIG">18sp</dimen>
+    <dimen name="YST_W_EMIDDLE">16sp</dimen>
+    <dimen name="YST_W_MIDDLE">13sp</dimen>
+    <dimen name="YST_W_SMIDDLE">14sp</dimen>
+    <dimen name="YST_W_COMMON">12sp</dimen>
+    <dimen name="YST_W_SMALL">10sp</dimen>
+    <dimen name="font_16">16sp</dimen>
+    <dimen name="font_9">9sp</dimen>
+    <dimen name="font_20">20sp</dimen>
+    <dimen name="font_15">15sp</dimen>
+    <dimen name="font_14">14sp</dimen>
+    <dimen name="font_11">11sp</dimen>
+</resources>

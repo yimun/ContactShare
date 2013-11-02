@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 字体颜色 -->
+    <!-- 灰色、很淡 -->
+    <color name="YST_F_GRAY_A">#909090</color>
+    <!-- 灰色、中淡 -->
+    <color name="YST_F_GRAY_B">#606060</color>
+    <!-- 灰色、重 -->
+    <color name="YST_F_GRAY_C">#202020</color>
+    <!-- 白色 -->
+    <color name="YST_F_WHITE">#ffffff</color>
+    <!-- 蓝色 -->
+    <color name="YST_F_BLUE">#3695de</color>
+    <!-- 红色 -->
+    <color name="YST_F_RED">#c50909</color>
+    <!-- 绿色 -->
+    <color name="YST_F_GREEN">#0fc420</color>
+    <!-- 黄色 -->
+    <color name="YST_F_YELLOW">#F2BD2F</color>
+
+    <!-- 背景，描边 -->
+    <!-- 背景灰、很淡 -->
+    <color name="YST_B_GRAY_A">#f7f7f7</color>
+    <!-- 描边灰、中淡 -->
+    <color name="YST_B_GRAY_B">#d7d7d7</color>
+    <!-- 复选灰、淡重 -->
+    <color name="YST_B_GRAY_C">#9c9c9c</color>
+
+    <!-- 复选灰、中重 -->
+    <color name="YST_B_GRAY_D">#6d6d6d</color>
+    <!-- 高亮、淡蓝色 -->
+    <color name="YST_B_BLUE">#69CFF1</color>
+    <!-- 背景白 -->
+    <color name="YST_B_WHITE">#ffffff</color>
+    <!-- 粉红色  -->
+    <color name="YST_B_RED">#be36ac</color>
+    <!-- 深蓝色 -->
+    <color name="YST_B_BLUE_A">#427cdb</color>
+</resources>
