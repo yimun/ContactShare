@@ -11,13 +11,45 @@ public class People implements Parcelable {
 	 */
 
 	/** 索引字母 */
-	public String index = null; // 格式为“z张”
+	private String index = null; // 格式为“z张”
 	/** 名字 */
-	public String name = null;
+	private String name = null;
 	/** 号码 （不止一个） */
-	public String phone = null;
+	private String phone = null;
 	/** 图片 */
-	public Bitmap bitmap = null;
+	private Bitmap bitmap = null;
+
+	public String getIndex() {
+		return index;
+	}
+
+	public void setIndex(String index) {
+		this.index = index;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public Bitmap getBitmap() {
+		return bitmap;
+	}
+
+	public void setBitmap(Bitmap bitmap) {
+		this.bitmap = bitmap;
+	}
 
 	@Override
 	public String toString() {

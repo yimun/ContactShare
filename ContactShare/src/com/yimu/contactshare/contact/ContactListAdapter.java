@@ -50,7 +50,7 @@ public class ContactListAdapter extends BaseAdapter {
 		// 循环字母表，找出list中对应字母的首个位置
 		for (int j = 0; j < index.length; j++) {
 			for (int i = 0; i < list.size(); i++) {
-				String firstchar = list.get(i).index.substring(0, 1);
+				String firstchar = list.get(i).getIndex().substring(0, 1);
 				if (firstchar.equals(index[j].toLowerCase())) {
 					selector.put(index[j], i);
 					break;
@@ -104,18 +104,18 @@ public class ContactListAdapter extends BaseAdapter {
 			
 			// 绑定数据
 			People item = list.get(position);
-			holder.tv1.setText(item.name);
-			holder.tv2.setText(item.phone);
-			holder.imView.setImageBitmap(item.bitmap);
+			holder.tv1.setText(item.getName());
+			holder.tv2.setText(item.getPhone());
+			holder.imView.setImageBitmap(item.getBitmap());
 			if(ContactList.checkedPos[position]){
 				holder.checkbox.setChecked(true);
 			}else{
 				holder.checkbox.setChecked(false);
 			}
 			// 显示index
-			String currentStr = item.index.substring(0, 1);
+			String currentStr = item.getIndex().substring(0, 1);
 			// 上一项的index
-			String previewStr = (position - 1) >= 0 ? list.get(position - 1).index
+			String previewStr = (position - 1) >= 0 ? list.get(position - 1).getIndex()
 					.substring(0, 1) : " ";
 			/**
 			 * 判断是否上一次的存在

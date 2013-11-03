@@ -160,12 +160,12 @@ public class ContactList extends Activity {
 					contactPhoto = BitmapFactory.decodeResource(getResources(),
 							R.drawable.ic_launcher);
 				}
-				people.name = contactName;
-				people.index = Pinyin4j.getHanyuPinyin(people.name).substring(
+				people.setName(contactName);
+				people.setIndex(Pinyin4j.getHanyuPinyin(people.getName()).substring(
 						0, 1)
-						+ people.name.substring(0, 1);
-				people.phone = phoneNumber;
-				people.bitmap = contactPhoto;
+						+ people.getName().substring(0, 1));
+				people.setPhone(phoneNumber);
+				people.setBitmap(contactPhoto);
 				listData.add(people);
 			}
 			phoneCursor.close();
@@ -180,8 +180,8 @@ public class ContactList extends Activity {
 			@Override
 			public int compare(People arg0, People arg1) {
 
-				char char0 = arg0.index.charAt(0);
-				char char1 = arg1.index.charAt(0);
+				char char0 = arg0.getIndex().charAt(0);
+				char char1 = arg1.getIndex().charAt(0);
 				if (char0 > char1)
 					return 1;
 				else
@@ -229,7 +229,7 @@ public class ContactList extends Activity {
 							}
 							tv_show.setVisibility(View.VISIBLE);
 							tv_show.setText(listData.get(listView
-									.getFirstVisiblePosition()).index
+									.getFirstVisiblePosition()).getIndex()
 									.substring(0, 1).toUpperCase());
 						}
 					}
