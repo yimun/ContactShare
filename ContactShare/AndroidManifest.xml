@@ -14,15 +14,24 @@
     <!-- 蓝牙权限 -->
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
+    <!-- 位置信息 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+
 
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:label="@string/app_name" 
+        android:theme="@style/GlobeTheme" >
         <activity
-            android:name=".MainActivity"
-            android:label="@string/app_name" >
+            android:name=".ShakeActivity"
+            android:label="@string/app_name"
+            android:alwaysRetainTaskState="true"
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -31,13 +40,23 @@
         </activity>
         <activity
             android:name=".contact.ContactList"
-            android:label="@string/app_name" >
+            android:label="@string/app_name"
+            android:alwaysRetainTaskState="true"
+            android:screenOrientation="portrait" >
         </activity>
         <activity
             android:name=".DeviceListActivity"
             android:configChanges="orientation|keyboardHidden"
             android:label="@string/select_device"
-            android:theme="@android:style/Theme.Holo.Dialog" />
+            android:theme="@android:style/Theme.Holo.Dialog"
+            android:alwaysRetainTaskState="true"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MainActivity"
+            android:alwaysRetainTaskState="true"
+            android:screenOrientation="portrait">
+            
+        </activity>
     </application>
 
 </manifest>

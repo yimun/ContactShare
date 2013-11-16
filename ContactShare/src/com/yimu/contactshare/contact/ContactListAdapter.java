@@ -36,19 +36,16 @@ public class ContactListAdapter extends BaseAdapter {
 	/**
 	 * 构造器
 	 * 
-	 * @param context
-	 * @param list
-	 * @param index
 	 */
 	public ContactListAdapter(Context context, List<People> list, String[] index) {
 		this.ctx = context;
-		this.list = list;
+		this.list = list;  
 		this.arr_index = index;
 		selector = new HashMap<String, Integer>();
 
 		
 		// 循环字母表，找出list中对应字母的首个位置
-		for (int j = 0; j < index.length; j++) {
+		for (int j = 0; j < index.length; j++) {	
 			for (int i = 0; i < list.size(); i++) {
 				String firstchar = list.get(i).getIndex().substring(0, 1);
 				if (firstchar.equals(index[j].toLowerCase())) {

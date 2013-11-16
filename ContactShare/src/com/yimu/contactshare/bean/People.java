@@ -1,11 +1,17 @@
 package com.yimu.contactshare.bean;
 
+import java.io.Serializable;
+
 import android.graphics.Bitmap;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class People implements Parcelable {
+public class People implements Parcelable, Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	/**
 	 * 
 	 */
@@ -14,7 +20,7 @@ public class People implements Parcelable {
 	private String index = null; // 格式为“z张”
 	/** 名字 */
 	private String name = null;
-	/** 号码 （不止一个） */
+	/** 号码 */
 	private String phone = null;
 	/** 图片 */
 	private Bitmap bitmap = null;
