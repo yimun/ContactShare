@@ -47,30 +47,30 @@ public class ContactList extends Activity {
 	private LinearLayout layoutIndex;
 	private ListView listView;
 	private ContactListAdapter adapter;
-	private TextView tv_show;// ÖĞ¼äÏÔÊ¾±êÌâµÄÎÄ±¾
+	private TextView tv_show;// ä¸­é—´æ˜¾ç¤ºæ ‡é¢˜çš„æ–‡æœ¬
 	private CheckBox checkAll;
 	private Button btn_OK;
 
-	/** ×ÖÄ¸Ë÷Òı±í */
+	/** å­—æ¯ç´¢å¼•è¡¨ */
 	private String[] arr_index = { "#", "A", "B", "C", "D", "E", "F", "G", "H",
 			"I", "J", "K", "L", "M", "N", "O", "P", "Q", "U", "V", "W", "X",
 			"Y", "Z" };
 
-	private int height; // ±ßÀ¸×ÖÌåµÄ¸ß¶È
-	private List<People> listData; // ÁªÏµÈË×Ü±í
+	private int height; // è¾¹æ å­—ä½“çš„é«˜åº¦
+	private List<People> listData; // è”ç³»äººæ€»è¡¨
 	private static boolean isCheckAll = false;
-	public static boolean[] checkedPos; // Î»ÖÃÊÇ·ñÑ¡Ôñ
+	public static boolean[] checkedPos; // ä½ç½®æ˜¯å¦é€‰æ‹©
 
-	/** »ñÈ¡¿âPhone±í×Ö¶Î **/
+	/** è·å–åº“Phoneè¡¨å­—æ®µ **/
 	private static final String[] PHONES_PROJECTION = new String[] {
 			Phone.DISPLAY_NAME, Phone.NUMBER, Photo.PHOTO_ID, Phone.CONTACT_ID };
-	/** ÁªÏµÈËÏÔÊ¾Ãû³Æ **/
+	/** è”ç³»äººæ˜¾ç¤ºåç§° **/
 	private static final int PHONES_DISPLAY_NAME_INDEX = 0;
-	/** µç»°ºÅÂë **/
+	/** ç”µè¯å·ç  **/
 	private static final int PHONES_NUMBER_INDEX = 1;
-	/** Í·ÏñID **/
+	/** å¤´åƒID **/
 	private static final int PHONES_PHOTO_ID_INDEX = 2;
-	/** ÁªÏµÈËµÄID **/
+	/** è”ç³»äººçš„ID **/
 	private static final int PHONES_CONTACT_ID_INDEX = 3;
 
 	@Override
@@ -89,7 +89,7 @@ public class ContactList extends Activity {
 		checkAll = (CheckBox) findViewById(R.id.checkBox1);
 		btn_OK = (Button) findViewById(R.id.button1);
 
-		// »ñÈ¡ÁªÏµÈËĞÅÏ¢
+		// è·å–è”ç³»äººä¿¡æ¯
 		getPhoneContacts();
 
 		adapter = new ContactListAdapter(this, listData, this.arr_index);
@@ -99,7 +99,7 @@ public class ContactList extends Activity {
 		tv_show.setVisibility(View.INVISIBLE);
 		checkedPos = new boolean[listData.size()];
 
-		// È«Ñ¡¿ò¼àÌı
+		// å…¨é€‰æ¡†ç›‘å¬
 		checkAll.setOnCheckedChangeListener(new OnCheckedChangeListener() {
 			@Override
 			public void onCheckedChanged(CompoundButton buttonView,
@@ -112,7 +112,7 @@ public class ContactList extends Activity {
 				}
 				for (int i = 0; i < listData.size(); i++)
 					checkedPos[i] = isCheckAll;
-				// Ë¢ĞÂÀà±í
+				// åˆ·æ–°ç±»è¡¨
 				listView.setAdapter(adapter);
 			}
 		});
@@ -124,32 +124,32 @@ public class ContactList extends Activity {
 		super.onResume();
 	}
 
-	/** µÃµ½ÊÖ»úÍ¨Ñ¶Â¼ÁªÏµÈËĞÅÏ¢ **/
+	/** å¾—åˆ°æ‰‹æœºé€šè®¯å½•è”ç³»äººä¿¡æ¯ **/
 	private void getPhoneContacts() {
 		listData = new ArrayList<People>();
 		ContentResolver resolver = this.getContentResolver();
-		// »ñÈ¡ÊÖ»úÁªÏµÈË
+		// è·å–æ‰‹æœºè”ç³»äºº
 		Cursor phoneCursor = resolver.query(Phone.CONTENT_URI,
 				PHONES_PROJECTION, null, null, null);
 		if (phoneCursor != null) {
 			while (phoneCursor.moveToNext()) {
 				People people = new People();
-				// µÃµ½ÊÖ»úºÅÂë
+				// å¾—åˆ°æ‰‹æœºå·ç 
 				String phoneNumber = phoneCursor.getString(PHONES_NUMBER_INDEX);
-				// µ±ÊÖ»úºÅÂëÎª¿ÕµÄ»òÕßÎª¿Õ×Ö¶Î Ìø¹ıµ±Ç°Ñ­»·
+				// å½“æ‰‹æœºå·ç ä¸ºç©ºçš„æˆ–è€…ä¸ºç©ºå­—æ®µ è·³è¿‡å½“å‰å¾ªç¯
 				if (TextUtils.isEmpty(phoneNumber))
 					continue;
 
-				// µÃµ½ÁªÏµÈËÃû³Æ
+				// å¾—åˆ°è”ç³»äººåç§°
 				String contactName = phoneCursor
 						.getString(PHONES_DISPLAY_NAME_INDEX);
-				// µÃµ½ÁªÏµÈËID
+				// å¾—åˆ°è”ç³»äººID
 				Long contactid = phoneCursor.getLong(PHONES_CONTACT_ID_INDEX);
-				// µÃµ½ÁªÏµÈËÍ·ÏñID
+				// å¾—åˆ°è”ç³»äººå¤´åƒID
 				Long photoid = phoneCursor.getLong(PHONES_PHOTO_ID_INDEX);
-				// µÃµ½ÁªÏµÈËÍ·ÏñBitamp
+				// å¾—åˆ°è”ç³»äººå¤´åƒBitamp
 				Bitmap contactPhoto = null;
-				// photoid ´óÓÚ0 ±íÊ¾ÁªÏµÈËÓĞÍ·Ïñ Èç¹ûÃ»ÓĞ¸ø´ËÈËÉèÖÃÍ·ÏñÔò¸øËûÒ»¸öÄ¬ÈÏµÄ
+				// photoid å¤§äº0 è¡¨ç¤ºè”ç³»äººæœ‰å¤´åƒ å¦‚æœæ²¡æœ‰ç»™æ­¤äººè®¾ç½®å¤´åƒåˆ™ç»™ä»–ä¸€ä¸ªé»˜è®¤çš„
 				if (photoid > 0) {
 					Uri uri = ContentUris.withAppendedId(
 							ContactsContract.Contacts.CONTENT_URI, contactid);
@@ -173,7 +173,7 @@ public class ContactList extends Activity {
 		mSort(listData);
 	}
 
-	// ¼¯ºÏÆ´Òô°´ÕÕindexÅÅĞò
+	// é›†åˆæ‹¼éŸ³æŒ‰ç…§indexæ’åº
 	private void mSort(List<People> list) {
 		// TODO Auto-generated method stub
 		Collections.sort(list, new Comparator<People>() {
@@ -192,14 +192,14 @@ public class ContactList extends Activity {
 
 	@Override
 	public void onWindowFocusChanged(boolean hasFocus) {
-		// ÔÚoncreateÀïÃæÖ´ĞĞÏÂÃæµÄ´úÂëÃ»·´Ó¦£¬ÒòÎªoncreateÀïÃæµÃµ½µÄgetHeight=0
+		// åœ¨oncreateé‡Œé¢æ‰§è¡Œä¸‹é¢çš„ä»£ç æ²¡ååº”ï¼Œå› ä¸ºoncreateé‡Œé¢å¾—åˆ°çš„getHeight=0
 		System.out
 				.println("layoutIndex.getHeight()=" + layoutIndex.getHeight());
 		height = layoutIndex.getHeight() / arr_index.length;
 		getIndexView();
 	}
 
-	/** »æÖÆË÷ÒıÁĞ±í */
+	/** ç»˜åˆ¶ç´¢å¼•åˆ—è¡¨ */
 	public void getIndexView() {
 		LinearLayout.LayoutParams params = new LayoutParams(
 				LayoutParams.WRAP_CONTENT, height);
@@ -217,15 +217,15 @@ public class ContactList extends Activity {
 				public boolean onTouch(View v, MotionEvent event) {
 					float y = event.getY();
 					int index = (int) (y / height);
-					if (index > -1 && index < arr_index.length) {// ·ÀÖ¹Ô½½ç
+					if (index > -1 && index < arr_index.length) {// é˜²æ­¢è¶Šç•Œ
 						String key = arr_index[index];
 						if (adapter.getSelector().containsKey(key)) {
 							int pos = adapter.getSelector().get(key);
-							if (listView.getHeaderViewsCount() > 0) {// ·ÀÖ¹ListViewÓĞ±êÌâÀ¸£¬±¾ÀıÖĞÃ»ÓĞ¡£
+							if (listView.getHeaderViewsCount() > 0) {// é˜²æ­¢ListViewæœ‰æ ‡é¢˜æ ï¼Œæœ¬ä¾‹ä¸­æ²¡æœ‰ã€‚
 								listView.setSelectionFromTop(
 										pos + listView.getHeaderViewsCount(), 0);
 							} else {
-								listView.setSelectionFromTop(pos, 0);// »¬¶¯µ½µÚÒ»Ïî
+								listView.setSelectionFromTop(pos, 0);// æ»‘åŠ¨åˆ°ç¬¬ä¸€é¡¹
 							}
 							tv_show.setVisibility(View.VISIBLE);
 							tv_show.setText(listData.get(listView
@@ -255,7 +255,7 @@ public class ContactList extends Activity {
 	}
 
 	/**
-	 * ·¢ËÍÒÑÑ¡ÔñµÄÁªÏµÈË
+	 * å‘é€å·²é€‰æ‹©çš„è”ç³»äºº
 	 */
 	class myOnClickListener implements OnClickListener {
 

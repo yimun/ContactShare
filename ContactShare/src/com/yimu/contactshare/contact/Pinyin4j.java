@@ -13,15 +13,15 @@ import net.sourceforge.pinyin4j.format.exception.BadHanyuPinyinOutputFormatCombi
 
 
 /**
- * @package£ºcom.yst_address_book
- * @author£ºAllen
- * @email£ºjaylong1302@163.com
- * @data£º2013-3-5 ÏÂÎç6:36:34
- * @description£ºThe class is for...
+ * @packageï¼šcom.yst_address_book
+ * @authorï¼šAllen
+ * @emailï¼šjaylong1302@163.com
+ * @dataï¼š2013-3-5 ä¸‹åˆ6:36:34
+ * @descriptionï¼šThe class is for...
  */
 public class Pinyin4j {
 	/**
-	 * ×Ö·û´®¼¯ºÏ×ª»»×Ö·û´®(¶ººÅ·Ö¸ô)
+	 * å­—ç¬¦ä¸²é›†åˆè½¬æ¢å­—ç¬¦ä¸²(é€—å·åˆ†éš”)
 	 * 
 	 * @author wyh
 	 * @param stringSet
@@ -42,7 +42,7 @@ public class Pinyin4j {
 	}
 
 	/**
-	 * »ñÈ¡Æ´Òô¼¯ºÏ
+	 * è·å–æ‹¼éŸ³é›†åˆ
 	 * 
 	 * @author wyh
 	 * @param src
@@ -52,10 +52,10 @@ public class Pinyin4j {
 		if (src != null && !src.trim().equalsIgnoreCase("")) {
 			char[] srcChar;
 			srcChar = src.toCharArray();
-			// ººÓïÆ´Òô¸ñÊ½Êä³öÀà
+			// æ±‰è¯­æ‹¼éŸ³æ ¼å¼è¾“å‡ºç±»
 			HanyuPinyinOutputFormat hanYuPinOutputFormat = new HanyuPinyinOutputFormat();
 
-			// Êä³öÉèÖÃ£¬´óĞ¡Ğ´£¬Òô±ê·½Ê½µÈ
+			// è¾“å‡ºè®¾ç½®ï¼Œå¤§å°å†™ï¼ŒéŸ³æ ‡æ–¹å¼ç­‰
 			hanYuPinOutputFormat.setCaseType(HanyuPinyinCaseType.LOWERCASE);
 			hanYuPinOutputFormat.setToneType(HanyuPinyinToneType.WITHOUT_TONE);
 			hanYuPinOutputFormat.setVCharType(HanyuPinyinVCharType.WITH_V);
@@ -63,7 +63,7 @@ public class Pinyin4j {
 			String[][] temp = new String[src.length()][];
 			for (int i = 0; i < srcChar.length; i++) {
 				char c = srcChar[i];
-				// ÊÇÖĞÎÄ»òÕßa-z»òÕßA-Z×ª»»Æ´Òô(ÎÒµÄĞèÇó£¬ÊÇ±£ÁôÖĞÎÄ»òÕßa-z»òÕßA-Z)
+				// æ˜¯ä¸­æ–‡æˆ–è€…a-zæˆ–è€…A-Zè½¬æ¢æ‹¼éŸ³(æˆ‘çš„éœ€æ±‚ï¼Œæ˜¯ä¿ç•™ä¸­æ–‡æˆ–è€…a-zæˆ–è€…A-Z)
 				if (String.valueOf(c).matches("[\\u4E00-\\u9FA5]+")) {
 					try {
 						temp[i] = PinyinHelper.toHanyuPinyinStringArray(
@@ -89,7 +89,7 @@ public class Pinyin4j {
 	}
 
 	/**
-	 * µİ¹é
+	 * é€’å½’
 	 * 
 	 * @author wyh
 	 * @param strJaggedArray
@@ -101,7 +101,7 @@ public class Pinyin4j {
 	}
 
 	/**
-	 * µİ¹é
+	 * é€’å½’
 	 * 
 	 * @author wyh
 	 * @param strJaggedArray
@@ -132,7 +132,7 @@ public class Pinyin4j {
 		}
 	}
 
-	/* »ñÈ¡ººÓïÆ´Òô */
+	/* è·å–æ±‰è¯­æ‹¼éŸ³ */
 	public static String getHanyuPinyin(String word) {
 		String format = makeStringByStringSet(getPinyin(word));
 		if(format.equals(""))
@@ -145,7 +145,7 @@ public class Pinyin4j {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		String str = "°¢ÒÌ";
+		String str = "é˜¿å§¨";
 		String str2 = "123";
 		System.out.println(makeStringByStringSet(getPinyin(str)));//dantianfang,shantianfang,chantianfang
 		System.out.println(getHanyuPinyin(str2));//afdfdfe

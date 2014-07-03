@@ -19,7 +19,7 @@ import android.widget.TextView;
 import com.yimu.contactshare.R;
 import com.yimu.contactshare.bean.People;
 
-/** ÊµÏÖFilterable½Ó¿Ú,±àĞ´¹ıÂË¹æÔò */
+/** å®ç°Filterableæ¥å£,ç¼–å†™è¿‡æ»¤è§„åˆ™ */
 public class ContactListAdapter extends BaseAdapter {
 	
 	private static final boolean D = true;
@@ -27,14 +27,14 @@ public class ContactListAdapter extends BaseAdapter {
 	private Context ctx;
 	private ViewHolder holder;
 	private List<People> list;
-	private Map<String, Integer> selector;// ¼üÖµÊÇË÷Òı±íµÄ×ÖÄ¸£¬ÖµÎª¶ÔÓ¦ÔÚlistviewÖĞµÄÎ»ÖÃ
-	/** ×ÖÄ¸±í */
+	private Map<String, Integer> selector;// é”®å€¼æ˜¯ç´¢å¼•è¡¨çš„å­—æ¯ï¼Œå€¼ä¸ºå¯¹åº”åœ¨listviewä¸­çš„ä½ç½®
+	/** å­—æ¯è¡¨ */
 	private String arr_index[];
 
 
 
 	/**
-	 * ¹¹ÔìÆ÷
+	 * æ„é€ å™¨
 	 * 
 	 */
 	public ContactListAdapter(Context context, List<People> list, String[] index) {
@@ -44,7 +44,7 @@ public class ContactListAdapter extends BaseAdapter {
 		selector = new HashMap<String, Integer>();
 
 		
-		// Ñ­»·×ÖÄ¸±í£¬ÕÒ³ölistÖĞ¶ÔÓ¦×ÖÄ¸µÄÊ×¸öÎ»ÖÃ
+		// å¾ªç¯å­—æ¯è¡¨ï¼Œæ‰¾å‡ºlistä¸­å¯¹åº”å­—æ¯çš„é¦–ä¸ªä½ç½®
 		for (int j = 0; j < index.length; j++) {	
 			for (int i = 0; i < list.size(); i++) {
 				String firstchar = list.get(i).getIndex().substring(0, 1);
@@ -94,12 +94,12 @@ public class ContactListAdapter extends BaseAdapter {
 			} else {
 				holder = (ViewHolder) convertView.getTag();
 			}
-			/** Îªcheckbox°ó¶¨¼àÌı±ØĞëÔÚÈçÏÂÎ»ÖÃ£¬·ñÔò½«Ôì³ÉcheckboxÑ¡Ïî´íÎ»»òÕßÆäËû³ö´í*/
+			/** ä¸ºcheckboxç»‘å®šç›‘å¬å¿…é¡»åœ¨å¦‚ä¸‹ä½ç½®ï¼Œå¦åˆ™å°†é€ æˆcheckboxé€‰é¡¹é”™ä½æˆ–è€…å…¶ä»–å‡ºé”™*/
 			holder.checkbox
 			.setOnCheckedChangeListener(new myCheckedChangeListener(
 					position));
 			
-			// °ó¶¨Êı¾İ
+			// ç»‘å®šæ•°æ®
 			People item = list.get(position);
 			holder.tv1.setText(item.getName());
 			holder.tv2.setText(item.getPhone());
@@ -109,17 +109,17 @@ public class ContactListAdapter extends BaseAdapter {
 			}else{
 				holder.checkbox.setChecked(false);
 			}
-			// ÏÔÊ¾index
+			// æ˜¾ç¤ºindex
 			String currentStr = item.getIndex().substring(0, 1);
-			// ÉÏÒ»ÏîµÄindex
+			// ä¸Šä¸€é¡¹çš„index
 			String previewStr = (position - 1) >= 0 ? list.get(position - 1).getIndex()
 					.substring(0, 1) : " ";
 			/**
-			 * ÅĞ¶ÏÊÇ·ñÉÏÒ»´ÎµÄ´æÔÚ
+			 * åˆ¤æ–­æ˜¯å¦ä¸Šä¸€æ¬¡çš„å­˜åœ¨
 			 */
 			if (!previewStr.equals(currentStr)) {
 				holder.tv_mid_index.setVisibility(View.VISIBLE);
-				holder.tv_mid_index.setText(currentStr);// ÖĞ½±ÌáÊ¾µÄÎÄ±¾ÏÔÊ¾µ±Ç°»¬¶¯µÄ×ÖÄ¸
+				holder.tv_mid_index.setText(currentStr);// ä¸­å¥–æç¤ºçš„æ–‡æœ¬æ˜¾ç¤ºå½“å‰æ»‘åŠ¨çš„å­—æ¯
 			} else {
 				holder.tv_mid_index.setVisibility(View.GONE);
 			}
@@ -135,15 +135,15 @@ public class ContactListAdapter extends BaseAdapter {
 	private class ViewHolder {
 		TextView tv1;
 		TextView tv2;
-		// Ë÷Òı×ÖÄ¸	
+		// ç´¢å¼•å­—æ¯	
 		TextView tv_mid_index;
-		// ÁªÏµÈËÍ·Ïñ
+		// è”ç³»äººå¤´åƒ
 		ImageView imView;
 		CheckBox checkbox;
 
 	}
 
-	/** Ñ¡Ôñ¿ò¼àÌıÆ÷ */
+	/** é€‰æ‹©æ¡†ç›‘å¬å™¨ */
 	class myCheckedChangeListener implements OnCheckedChangeListener {
 
 		private int position;

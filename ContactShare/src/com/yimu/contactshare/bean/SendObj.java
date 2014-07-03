@@ -51,7 +51,7 @@ public class SendObj implements Serializable{
 		this.number = number;
 	}
 
-	// ÓÉpeople´´½¨µÄ·¢ËÍ¶ÔÏó
+	// ç”±peopleåˆ›å»ºçš„å‘é€å¯¹è±¡
 	public SendObj(Context con, People people) {
 		this.context = con;
 		name = people.getName();
@@ -59,7 +59,7 @@ public class SendObj implements Serializable{
 		initPos();
 	}
 
-	// ²úÉú±¾»ú¼òµ¥·¢ËÍ¶ÔÏó
+	// äº§ç”Ÿæœ¬æœºç®€å•å‘é€å¯¹è±¡
 	public SendObj(Context con, String name, String number) {
 		this.context = con;
 		this.name = name;
@@ -67,22 +67,22 @@ public class SendObj implements Serializable{
 		initPos();
 	}
 
-	// ³õÊ¼»¯µØÀíĞÅÏ¢
+	// åˆå§‹åŒ–åœ°ç†ä¿¡æ¯
 	public void initPos() {
 		LocationManager loctionManager;
 		String contextService = Context.LOCATION_SERVICE;
-		// Í¨¹ıÏµÍ³·şÎñ£¬È¡µÃLocationManager¶ÔÏó
+		// é€šè¿‡ç³»ç»ŸæœåŠ¡ï¼Œå–å¾—LocationManagerå¯¹è±¡
 		loctionManager = (LocationManager) context
 				.getSystemService(contextService);
 		Criteria criteria = new Criteria();
-		criteria.setAccuracy(Criteria.ACCURACY_FINE);// ¸ß¾«¶È
-		criteria.setAltitudeRequired(false);// ²»ÒªÇóº£°Î
-		criteria.setBearingRequired(false);// ²»ÒªÇó·½Î»
-		criteria.setCostAllowed(true);// ÔÊĞíÓĞ»¨·Ñ
-		criteria.setPowerRequirement(Criteria.POWER_LOW);// µÍ¹¦ºÄ
-		// ´Ó¿ÉÓÃµÄÎ»ÖÃÌá¹©Æ÷ÖĞ£¬Æ¥ÅäÒÔÉÏ±ê×¼µÄ×î¼ÑÌá¹©Æ÷
+		criteria.setAccuracy(Criteria.ACCURACY_FINE);// é«˜ç²¾åº¦
+		criteria.setAltitudeRequired(false);// ä¸è¦æ±‚æµ·æ‹”
+		criteria.setBearingRequired(false);// ä¸è¦æ±‚æ–¹ä½
+		criteria.setCostAllowed(true);// å…è®¸æœ‰èŠ±è´¹
+		criteria.setPowerRequirement(Criteria.POWER_LOW);// ä½åŠŸè€—
+		// ä»å¯ç”¨çš„ä½ç½®æä¾›å™¨ä¸­ï¼ŒåŒ¹é…ä»¥ä¸Šæ ‡å‡†çš„æœ€ä½³æä¾›å™¨
 		String provider = loctionManager.getBestProvider(criteria, true);
-		// »ñµÃ×îºóÒ»´Î±ä»¯µÄÎ»ÖÃ
+		// è·å¾—æœ€åä¸€æ¬¡å˜åŒ–çš„ä½ç½®
 		Location location = loctionManager.getLastKnownLocation(provider);
 		latitude = location.getLatitude();
 		longitude = location.getLongitude();

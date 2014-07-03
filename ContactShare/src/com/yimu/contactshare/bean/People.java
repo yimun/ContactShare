@@ -16,13 +16,13 @@ public class People implements Parcelable, Serializable {
 	 * 
 	 */
 
-	/** Ë÷Òı×ÖÄ¸ */
-	private String index = null; // ¸ñÊ½Îª¡°zÕÅ¡±
-	/** Ãû×Ö */
+	/** ç´¢å¼•å­—æ¯ */
+	private String index = null; // æ ¼å¼ä¸ºâ€œzå¼ â€
+	/** åå­— */
 	private String name = null;
-	/** ºÅÂë */
+	/** å·ç  */
 	private String phone = null;
-	/** Í¼Æ¬ */
+	/** å›¾ç‰‡ */
 	private Bitmap bitmap = null;
 
 	public String getIndex() {

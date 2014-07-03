@@ -18,16 +18,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class ShakeActivity extends Activity implements SensorEventListener {
-	// Sensor¹ÜÀíÆ÷
+	// Sensorç®¡ç†å™¨
 	private SensorManager mSensorManager = null;
-	// Õğ¶¯
+	// éœ‡åŠ¨
 	private Vibrator mVibrator = null;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_shake);
-		((TextView) findViewById(R.id.TITLE_TEXT)).setText("Ò¡Ò»Ò¡·ÖÏí");
+		((TextView) findViewById(R.id.TITLE_TEXT)).setText("æ‘‡ä¸€æ‘‡åˆ†äº«");
 		findViewById(R.id.LEFT_BUTTON).setVisibility(View.VISIBLE);
 		((Button) findViewById(R.id.LEFT_BUTTON))
 				.setOnClickListener(new OnClickListener() {
@@ -54,8 +54,8 @@ public class ShakeActivity extends Activity implements SensorEventListener {
 					|| Math.abs(values[2]) > 14) {
 				mVibrator.vibrate(100);
 				SimpleDateFormat f = new SimpleDateFormat("yyyy/MM/dd/HH/mm/ss");
-				System.out.println("¸ĞÓ¦³É¹¦");
-				Toast.makeText(this,f.format(new Date()) + "ÊÖ»úÒ¡¶¯ÁË...",Toast.LENGTH_SHORT).show();
+				System.out.println("æ„Ÿåº”æˆåŠŸ");
+				Toast.makeText(this,f.format(new Date()) + "æ‰‹æœºæ‘‡åŠ¨äº†...",Toast.LENGTH_SHORT).show();
 			}
 		}
 	}
